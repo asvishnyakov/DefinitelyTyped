@@ -16,5 +16,8 @@
     "files": [
         "index.d.ts",
         "gtag.js-tests.ts"
+    ],
+    "include": [
+        "tests/**/*"
     ]
 }
