@@ -6,6 +6,7 @@ declare namespace Gtag {
         set: [targetId: string, config: CustomParams | boolean | string] | [config: CustomParams];
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
         js: [config: Date];
+        // <EventName extends keyof Events>(command: "event", eventName: EventName, ...args: Parameters<Events[EventName]>): void;
         // event: [eventName: EventNames | (string & {}), eventParams?: ControlParams | EventParams | CustomParams]
         get: [
             targetId: string,
@@ -16,7 +17,7 @@ declare namespace Gtag {
     }
 
     interface Gtag {
-        // <Command extends keyof GtagCommands>(command: Command, ...args: GtagCommands[Command]): void;
+        <Command extends keyof GtagCommands>(command: Command, ...args: GtagCommands[Command]): void;
     }
 
     interface ConfigParams {
@@ -36,45 +37,6 @@ declare namespace Gtag {
         event_callback?: (() => void) | undefined;
         event_timeout?: number | undefined;
     }
-
-    type EventNames =
-        | "add_payment_info"
-        | "add_shipping_info"
-        | "add_to_cart"
-        | "add_to_wishlist"
-        | "begin_checkout"
-        | "checkout_progress"
-        | "earn_virtual_currency"
-        | "exception"
-        | "generate_lead"
-        | "join_group"
-        | "level_end"
-        | "level_start"
-        | "level_up"
-        | "login"
-        | "page_view"
-        | "post_score"
-        | "purchase"
-        | "refund"
-        | "remove_from_cart"
-        | "screen_view"
-        | "search"
-        | "select_content"
-        | "select_item"
-        | "select_promotion"
-        | "set_checkout_option"
-        | "share"
-        | "sign_up"
-        | "spend_virtual_currency"
-        | "tutorial_begin"
-        | "tutorial_complete"
-        | "unlock_achievement"
-        | "timing_complete"
-        | "view_cart"
-        | "view_item"
-        | "view_item_list"
-        | "view_promotion"
-        | "view_search_results";
 
     interface EventParams {
         checkout_option?: string | undefined;
