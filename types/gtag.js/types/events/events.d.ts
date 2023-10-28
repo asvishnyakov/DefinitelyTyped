@@ -49,6 +49,14 @@ declare namespace Gtag {
         (command: "event", eventName: "earn_virtual_currency", eventParams?: EarnVirtualCurrencyEventParams): void;
 
         /**
+         * An exception event is logged when the normal flow of an app's execution is interrupted.
+         *
+         * Reference:
+         * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#exception}
+         */
+        (command: "event", eventName: "exception", eventParams?: ExceptionEventParams): void;
+
+        /**
          * This event measures when a lead has been generated (for example, through a form). Log this to understand the effectiveness of your marketing campaigns and how many customers re-engage with your business after remarketing to the customers.
          *
          * Reference:
@@ -95,6 +103,14 @@ declare namespace Gtag {
          * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login}
          */
         (command: "event", eventName: "login", eventParams?: LoginEventParams): void;
+
+        /**
+         * This event signifies a user has viewed a page.
+         *
+         * Reference:
+         * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#page_view}
+         */
+        (command: "event", eventName: "page_view", eventParams?: PageViewEventParams): void;
 
         /**
          * Send this event when the user posts a score. Use this event to understand how users are performing in your game and correlate high scores with audiences or behaviors.
@@ -241,5 +257,13 @@ declare namespace Gtag {
          * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_promotion}
          */
         (command: "event", eventName: "view_promotion", eventParams?: ViewPromotionEventParams): void;
+
+        /**
+         * Log this event when the user has been presented with the results of a search. Note that you can enable the view_search_results event for automatic collection through {@link https://support.google.com/analytics/answer/9216061 Enhanced event measurement} in Google Analytics.
+         *
+         * Reference:
+         * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#view_search_results}
+         */
+        (command: "event", eventName: "view_search_results", eventParams?: ViewSearchResultsEventParams): void;
     }
 }

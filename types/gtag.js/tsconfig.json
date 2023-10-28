@@ -18,6 +18,7 @@
         "gtag.js-tests.ts"
     ],
     "include": [
-        "tests/**/*"
+        "tests/**/*",
+        "types/**/*"
     ]
 }

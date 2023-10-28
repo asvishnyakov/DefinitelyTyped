@@ -10,15 +10,15 @@ export const tax = 1.11;
 export const item_id = "SKU_12345";
 export const item_name = "Stan and Friends Tee";
 
-export const item_with_id_only = {
+export const item_with_id_only: Gtag.Item = {
     item_id,
 };
 
-export const item_with_name_only = {
+export const item_with_name_only: Gtag.Item = {
     item_name,
 };
 
-export const primary_item = {
+export const primary_item: Gtag.Item = {
     item_id,
     item_name,
     affiliation: "Google Store",
@@ -39,7 +39,7 @@ export const primary_item = {
     quantity: 1,
 };
 
-export const alternative_item = {
+export const alternative_item: Gtag.Item = {
     item_id: "SKU_12346",
     item_name: "Google Grey Women's Tee",
     affiliation: "Google Merchandise Store",
@@ -57,8 +57,6 @@ export const alternative_item = {
     item_variant: "gray",
     location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
     price: 20.99,
-    promotion_id: "P_12345",
-    promotion_name: "Summer Sale",
     quantity: 1,
 };
 
