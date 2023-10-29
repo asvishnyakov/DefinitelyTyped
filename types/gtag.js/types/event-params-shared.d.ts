@@ -51,19 +51,36 @@ declare namespace Gtag {
     /**
      * Interface of an item object used in lists for this event.
      *
-     * Reference:
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_payment_info_item add_payment_info_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_shipping_info_item add_shipping_info_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_to_cart_item add_to_cart_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_to_wishlist_item add_to_wishlist_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#purchase_item purchase_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#refund_item refund_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#remove_to_cart_item remove_to_cart_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#select_item_item select_item_item}
+     * References:
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#add_payment_info_item add_payment_info_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#add_shipping_info_item add_shipping_info_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#add_to_cart_item add_to_cart_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#add_to_wishlist_item add_to_wishlist_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#begin_checkout begin_checkout (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#purchase_item purchase_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#refund_item refund_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#remove_from_cart_item remove_from_cart_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#select_item_item select_item_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#select_promotion_item select_promotion_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#view_cart_item view_cart_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#view_item_item view_item_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#view_item_list_item view_item_list_item (Google Tag (gtag.js))}
+     * @see {@link https://developers.google.com/tag-platform/gtagjs/reference/events#view_promotion_item view_promotion_item (Google Tag (gtag.js))}
      *
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_item_item view_item_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_item_list_item view_item_list_item}
-     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_cart_item view_cart_item}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_payment_info_item add_payment_info_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_shipping_info_item add_shipping_info_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_to_cart_item add_to_cart_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_to_wishlist_item add_to_wishlist_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#begin_checkout begin_checkout (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#purchase_item purchase_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#refund_item refund_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#remove_from_cart_item remove_from_cart_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#select_item_item select_item_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#select_promotion_item select_promotion_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_cart_item view_cart_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_item_item view_item_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_item_list_item view_item_list_item (Google Analytics 4)}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_promotion_item view_promotion_item (Google Analytics 4)}
      */
     type Item = MayHaveCoupon & HasItemIdOrName & MayHaveItemList & MayHaveItemFields;
 
