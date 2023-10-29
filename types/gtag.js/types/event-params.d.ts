@@ -1,21 +1,57 @@
 declare namespace Gtag {
-    type AddPaymentInfoEventParams = HasCurrency & HasCoupon & HasItems & {
+    /**
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/event-parameters Set up event parameters}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events Reference}
+     */
+    type EventParams =
+        | AddPaymentInfoEventParams
+        | AddToCartEventParams
+        | AddToWishlistEventParams
+        | BeginCheckoutEventParams
+        | EarnVirtualCurrencyEventParams
+        | ExceptionEventParams
+        | GenerateLeadEventParams
+        | JoinGroupEventParams
+        | LevelEndEventParams
+        | LevelStartEventParams
+        | LevelUpEventParams
+        | LoginEventParams
+        | PageViewEventParams
+        | PostScoreEventParams
+        | PurchaseEventParams
+        | RefundEventParams
+        | RemoveFromCartEventParams
+        | SearchEventParams
+        | SelectContentEventParams
+        | SelectItemEventParams
+        | SelectPromotionEventParams
+        | ShareEventParams
+        | SignUpEventParams
+        | SpendVirtualCurrencyEventParams
+        | UnlockAchievementEventParams
+        | ViewCartEventParams
+        | ViewItemEventParams
+        | ViewItemListEventParams
+        | ViewPromotionEventParams
+        | ViewSearchResultsEventParams;
+
+    type AddPaymentInfoEventParams = MayHaveCurrency & MayHaveCoupon & HasItems & {
         /** The chosen method of payment. */
         payment_type?: string;
     };
 
-    type AddShippingInfoEventParams = HasCurrency & HasCoupon & HasItems & {
+    type AddShippingInfoEventParams = MayHaveCurrency & MayHaveCoupon & HasItems & {
         /** The shipping tier (e.g. Ground, Air, Next-day) selected for delivery of the purchased item. */
         shipping_tier?: string;
     };
 
-    type AddToCartEventParams = HasCurrency & HasItems;
+    type AddToCartEventParams = MayHaveCurrency & HasItems;
 
-    type AddToWishlistEventParams = HasCurrency & HasItems;
+    type AddToWishlistEventParams = MayHaveCurrency & HasItems;
 
-    type BeginCheckoutEventParams = HasCurrency & HasCoupon & HasItems;
+    type BeginCheckoutEventParams = MayHaveCurrency & MayHaveCoupon & HasItems;
 
-    type EarnVirtualCurrencyEventParams = HasVirtualCurrency;
+    type EarnVirtualCurrencyEventParams = MayHaveVirtualCurrency;
 
     interface ExceptionEventParams {
         /** The description of the exception that occurred. */
@@ -25,19 +61,19 @@ declare namespace Gtag {
         fatal?: boolean;
     }
 
-    type GenerateLeadEventParams = HasCurrency;
+    type GenerateLeadEventParams = MayHaveCurrency;
 
     interface JoinGroupEventParams {
         /** The ID of the group. */
         group_id?: string;
     }
 
-    interface LevelEndEventParams extends HasLevel {
+    interface LevelEndEventParams extends MayHaveLevel {
         /** Set to true if the level was completed successfully. */
         success?: boolean;
     }
 
-    type LevelStartEventParams = HasLevel;
+    type LevelStartEventParams = MayHaveLevel;
 
     interface LevelUpEventParams {
         /** The level of the character. */
@@ -86,11 +122,11 @@ declare namespace Gtag {
         character?: string;
     }
 
-    type PurchaseEventParams = HasCurrency & HasCoupon & HasItems & Transaction;
+    type PurchaseEventParams = MayHaveCurrency & MayHaveCoupon & HasItems & Transaction;
 
-    type RefundEventParams = HasCurrency & HasCoupon & Partial<HasItems> & Transaction;
+    type RefundEventParams = MayHaveCurrency & MayHaveCoupon & Partial<HasItems> & Transaction;
 
-    type RemoveFromCartEventParams = HasCurrency & HasItems;
+    type RemoveFromCartEventParams = MayHaveCurrency & HasItems;
 
     interface SearchEventParams {
         /** The term that was searched for. */
@@ -105,9 +141,9 @@ declare namespace Gtag {
         content_id?: string;
     }
 
-    type SelectItemEventParams = HasItemList & HasSingleItem;
+    type SelectItemEventParams = MayHaveItemList & HasSingleItem;
 
-    type SelectPromotionEventParams = Partial<HasItems<Item & HasPromotion>> & HasPromotion;
+    type SelectPromotionEventParams = Partial<HasItems<Item & MayHavePromotion>> & MayHavePromotion;
 
     interface ShareEventParams extends Partial<HasItemId> {
         /** The method in which the content is shared. */
@@ -122,20 +158,20 @@ declare namespace Gtag {
         method?: string;
     }
 
-    type SpendVirtualCurrencyEventParams = Required<HasVirtualCurrency> & Partial<HasItemName>;
+    type SpendVirtualCurrencyEventParams = Required<MayHaveVirtualCurrency> & Partial<HasItemName>;
 
     interface UnlockAchievementEventParams {
         /** The id of the achievement that was unlocked. */
         achievement_id: string;
     }
 
-    type ViewCartEventParams = HasCurrency & HasItems;
+    type ViewCartEventParams = MayHaveCurrency & HasItems;
 
-    type ViewItemEventParams = HasCurrency & HasItems;
+    type ViewItemEventParams = MayHaveCurrency & HasItems;
 
-    type ViewItemListEventParams = HasItemList & HasItems;
+    type ViewItemListEventParams = MayHaveItemList & HasItems;
 
-    type ViewPromotionEventParams = HasPromotion & HasSingleItem<Item & HasPromotion>;
+    type ViewPromotionEventParams = MayHavePromotion & HasSingleItem<Item & MayHavePromotion>;
 
     interface ViewSearchResultsEventParams {
         /** The term used for the search. */

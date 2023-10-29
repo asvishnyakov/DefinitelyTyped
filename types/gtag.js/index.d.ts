@@ -37,29 +37,6 @@ declare namespace Gtag {
         event_timeout?: number | undefined;
     }
 
-    interface EventParams {
-        checkout_option?: string | undefined;
-        checkout_step?: number | undefined;
-        content_id?: string | undefined;
-        content_type?: string | undefined;
-        coupon?: string | undefined;
-        currency?: string | undefined;
-        description?: string | undefined;
-        fatal?: boolean | undefined;
-        items?: Item[] | undefined;
-        method?: string | undefined;
-        number?: string | undefined;
-        promotions?: HasPromotion[] | undefined;
-        screen_name?: string | undefined;
-        search_term?: string | undefined;
-        shipping?: Currency | undefined;
-        tax?: Currency | undefined;
-        transaction_id?: string | undefined;
-        value?: number | undefined;
-        event_label?: string | undefined;
-        event_category?: string | undefined;
-    }
-
     type Currency = string | number;
 
     type FieldNames = "client_id" | "session_id" | "gclid";

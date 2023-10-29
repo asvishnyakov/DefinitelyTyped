@@ -1,6 +1,16 @@
 declare namespace Gtag {
+    /**
+     * @see {@link Events}
+     */
     type EventNames = `${Events}`;
 
+    /**
+     * These events let you measure additional features and behavior and generate more useful reports in Google Analytics 4. Because these events require additional context to be meaningful, they are not sent automatically.
+     *
+     * @see {@link https://support.google.com/analytics/answer/9267735 Recommended Events}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/events Set up events}
+     * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events Reference}
+     */
     enum Events {
         AddPaymentInfo = "add_payment_info",
         AddShippingInfo = "add_shipping_info",

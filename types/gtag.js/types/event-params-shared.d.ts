@@ -1,26 +1,29 @@
 declare namespace Gtag {
-    type HasCurrency = {
-        currency?: never;
-        value?: never;
-    } | {
+    interface HasCurrency {
         /**
          * Currency of the items associated with the event, in {@link https://en.wikipedia.org/wiki/ISO_4217#Active_codes 3-letter ISO 4217} format.
+         *
+         * \* If you set {@link value} then {@link currency} is required for revenue metrics to be computed accurately.
          */
         currency: string;
 
         /**
          * The monetary value of the event.
          *
-         * * value is typically required for meaningful reporting. If you mark the event as a conversion then it's recommended you set value.
+         * \* {@link value} is typically required for meaningful reporting. If you {@link https://support.google.com/analytics/answer/9267568 mark the event as a conversion} then it's recommended you set {@link value}.
+         *
+         * \* {@link currency} is required if you set value.
          */
         value: number;
-    };
+    }
 
-    interface HasCoupon {
+    type MayHaveCurrency = HasAllOrNone<HasCurrency>;
+
+    interface MayHaveCoupon {
         /**
          * The coupon name/code associated with the event.
          *
-         * Event-level and item-level coupon parameters are independent.
+         * Event-level and item-level {@link coupon} parameters are independent.
          */
         coupon?: string;
     }
@@ -29,7 +32,7 @@ declare namespace Gtag {
         /**
          * The ID of the item.
          *
-         * * One of item_id or item_name is required.
+         * * One of {@link item_id} or {@link HasItemName.item_name} is required.
          */
         item_id: string;
     }
@@ -38,10 +41,12 @@ declare namespace Gtag {
         /**
          * The name of the item.
          *
-         * * One of item_id or item_name is required.
+         * * One of {@link HasItemId.item_id} or {@link item_name} is required.
          */
         item_name: string;
     }
+
+    type HasItemIdOrName = HasAtLeastOne<HasItemId, HasItemName>;
 
     /**
      * Interface of an item object used in lists for this event.
@@ -60,19 +65,15 @@ declare namespace Gtag {
      * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_item_list_item view_item_list_item}
      * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/events#view_cart_item view_cart_item}
      */
-    type Item = ((HasItemId | HasItemName) | (HasItemId & HasItemName)) & HasItemList & {
+    type Item = MayHaveCoupon & HasItemIdOrName & MayHaveItemList & MayHaveItemFields;
+
+    interface MayHaveItemFields {
         /**
          * A product affiliation to designate a supplying company or brick and mortar store location.
-         * Note: `affiliation` is only available at the item-scope.
+         *
+         * Note: {@link affiliation} is only available at the item-scope.
          */
         affiliation?: string;
-
-        /**
-         * The coupon name/code associated with the item.
-         *
-         * Event-level and item-level coupon parameters are independent.
-         */
-        coupon?: string;
 
         /** The monetary discount value associated with the item. */
         discount?: number;
@@ -103,7 +104,8 @@ declare namespace Gtag {
 
         /**
          * The physical location associated with the item (e.g. the physical store location). It's recommended to use the {@link https://developers.google.com/maps/documentation/places/web-service/place-id Google Place ID} that corresponds to the associated item. A custom location ID can also be used.
-         * Note: `location id` is only available at the item-scope.
+         *
+         * Note: {@link location_id} is only available at the item-scope.
          */
         location_id?: string;
 
@@ -113,10 +115,10 @@ declare namespace Gtag {
         /**
          * Item quantity.
          *
-         * If not set, quantity is set to 1.
+         * If not set, {@link quantity} is set to 1.
          */
         quantity?: number;
-    };
+    }
 
     interface HasItems<I = Item> {
         /** The items for the event. */
@@ -133,7 +135,7 @@ declare namespace Gtag {
         items: [I];
     }
 
-    interface HasItemList {
+    interface MayHaveItemList {
         /**
          * The ID of the list in which the item was presented to the user.
          *
@@ -151,12 +153,12 @@ declare namespace Gtag {
         item_list_name?: string;
     }
 
-    interface HasLevel {
+    interface MayHaveLevel {
         /** The name of the level. */
         level_name?: string;
     }
 
-    interface HasPromotion {
+    interface MayHavePromotion {
         /**
          * The name of the promotional creative.
          *
@@ -190,7 +192,7 @@ declare namespace Gtag {
         promotion_name?: string;
     }
 
-    interface HasVirtualCurrency {
+    interface MayHaveVirtualCurrency {
         /** The name of the virtual currency. */
         virtual_currency_name?: string;
 
