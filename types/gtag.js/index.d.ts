@@ -1,7 +1,13 @@
+/**
+ *  You can invoke gtag() commands anywhere on your page, as long as your commands appear below the Google tag snippet. To learn how to add the snippet to a page, see the {@link https://developers.google.com/tag-platform/gtagjs/install installation guide}.
+ *
+ * @see {@link https://developers.google.com/tag-platform/gtagjs/reference}
+ */
 declare var gtag: Gtag.Gtag;
+
 declare namespace Gtag {
     interface GtagCommands {
-        config: [targetId: string, config?: ControlParams | EventParams | ConfigParams | CustomParams];
+        // config: [targetId: string, config?: ControlParams | EventParams | ConfigParams | CustomParams];
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
         set: [targetId: string, config: CustomParams | boolean | string] | [config: CustomParams];
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
@@ -18,13 +24,6 @@ declare namespace Gtag {
 
     interface Gtag {
         <Command extends keyof GtagCommands>(command: Command, ...args: GtagCommands[Command]): void;
-    }
-
-    interface ConfigParams {
-        page_title?: string | undefined;
-        page_location?: string | undefined;
-        page_path?: string | undefined;
-        send_page_view?: boolean | undefined;
     }
 
     interface CustomParams {
