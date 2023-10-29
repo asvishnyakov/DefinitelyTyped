@@ -1,6 +1,11 @@
 gtag("config", "STREAM_ID");
 
 gtag("config", "STREAM_ID", {
+    groups: "default,vendors",
+    send_to: "G-XXXXXX",
+    event_callback: () => {},
+    event_timeout: 2000,
+
     allow_google_signals: true,
     allow_ad_personalization_signals: true,
     campaign_content: "logolink",

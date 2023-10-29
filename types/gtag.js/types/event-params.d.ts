@@ -33,62 +33,63 @@ declare namespace Gtag {
         | ViewItemEventParams
         | ViewItemListEventParams
         | ViewPromotionEventParams
-        | ViewSearchResultsEventParams;
+        | ViewSearchResultsEventParams
+        | CustomParams;
 
-    type AddPaymentInfoEventParams = MayHaveCurrency & MayHaveCoupon & HasItems & {
+    type AddPaymentInfoEventParams = CustomParams & MayHaveCurrency & MayHaveCoupon & HasItems & {
         /** The chosen method of payment. */
         payment_type?: string;
     };
 
-    type AddShippingInfoEventParams = MayHaveCurrency & MayHaveCoupon & HasItems & {
+    type AddShippingInfoEventParams = CustomParams & MayHaveCurrency & MayHaveCoupon & HasItems & {
         /** The shipping tier (e.g. Ground, Air, Next-day) selected for delivery of the purchased item. */
         shipping_tier?: string;
     };
 
-    type AddToCartEventParams = MayHaveCurrency & HasItems;
+    type AddToCartEventParams = CustomParams & MayHaveCurrency & HasItems;
 
-    type AddToWishlistEventParams = MayHaveCurrency & HasItems;
+    type AddToWishlistEventParams = CustomParams & MayHaveCurrency & HasItems;
 
-    type BeginCheckoutEventParams = MayHaveCurrency & MayHaveCoupon & HasItems;
+    type BeginCheckoutEventParams = CustomParams & MayHaveCurrency & MayHaveCoupon & HasItems;
 
-    type EarnVirtualCurrencyEventParams = MayHaveVirtualCurrency;
+    type EarnVirtualCurrencyEventParams = CustomParams & MayHaveVirtualCurrency;
 
-    interface ExceptionEventParams {
+    type ExceptionEventParams = CustomParams & {
         /** The description of the exception that occurred. */
         description?: string;
 
         /** Whether or not the exception was a fatal one. */
         fatal?: boolean;
-    }
+    };
 
-    type GenerateLeadEventParams = MayHaveCurrency;
+    type GenerateLeadEventParams = CustomParams & MayHaveCurrency;
 
-    interface JoinGroupEventParams {
+    type JoinGroupEventParams = CustomParams & {
         /** The ID of the group. */
         group_id?: string;
-    }
+    };
 
-    interface LevelEndEventParams extends MayHaveLevel {
+    type LevelEndEventParams = CustomParams & MayHaveLevel & {
         /** Set to true if the level was completed successfully. */
         success?: boolean;
-    }
+    };
 
-    type LevelStartEventParams = MayHaveLevel;
+    type LevelStartEventParams = CustomParams & MayHaveLevel;
 
-    interface LevelUpEventParams {
+    type LevelUpEventParams = CustomParams & {
         /** The level of the character. */
         level?: number;
 
         /** The character that leveled up. */
         character?: string;
-    }
+    };
 
-    interface LoginEventParams {
+    type LoginEventParams = CustomParams & {
         /** The method used to login. */
         method?: string;
-    }
+    };
 
-    interface PageViewEventParams {
+    type PageViewEventParams = CustomParams & {
         /** The URL of the page. */
         page_location?: string;
 
@@ -109,9 +110,9 @@ declare namespace Gtag {
 
         /** The client's user agent. */
         user_agent?: string;
-    }
+    };
 
-    interface PostScoreEventParams {
+    type PostScoreEventParams = CustomParams & {
         /** The score to post. */
         score: number;
 
@@ -120,61 +121,61 @@ declare namespace Gtag {
 
         /** The character that achieved the score. */
         character?: string;
-    }
+    };
 
-    type PurchaseEventParams = MayHaveCurrency & MayHaveCoupon & HasItems & Transaction;
+    type PurchaseEventParams = CustomParams & MayHaveCurrency & MayHaveCoupon & HasItems & Transaction;
 
-    type RefundEventParams = MayHaveCurrency & MayHaveCoupon & Partial<HasItems> & Transaction;
+    type RefundEventParams = CustomParams & MayHaveCurrency & MayHaveCoupon & Partial<HasItems> & Transaction;
 
-    type RemoveFromCartEventParams = MayHaveCurrency & HasItems;
+    type RemoveFromCartEventParams = CustomParams & MayHaveCurrency & HasItems;
 
-    interface SearchEventParams {
+    type SearchEventParams = CustomParams & {
         /** The term that was searched for. */
         search_term: string;
-    }
+    };
 
-    interface SelectContentEventParams {
+    type SelectContentEventParams = CustomParams & {
         /** The type of selected content. */
         content_type?: string;
 
         /** An identifier for the content that was selected. */
         content_id?: string;
-    }
+    };
 
-    type SelectItemEventParams = MayHaveItemList & HasSingleItem;
+    type SelectItemEventParams = CustomParams & MayHaveItemList & HasSingleItem;
 
-    type SelectPromotionEventParams = Partial<HasItems<Item & MayHavePromotion>> & MayHavePromotion;
+    type SelectPromotionEventParams = CustomParams & Partial<HasItems<Item & MayHavePromotion>> & MayHavePromotion;
 
-    interface ShareEventParams extends Partial<HasItemId> {
+    type ShareEventParams = CustomParams & Partial<HasItemId> & {
         /** The method in which the content is shared. */
         method?: string;
 
         /** The type of shared content. */
         content_type?: string;
-    }
+    };
 
-    interface SignUpEventParams {
+    type SignUpEventParams = CustomParams & {
         /** The method used for sign up. */
         method?: string;
-    }
+    };
 
-    type SpendVirtualCurrencyEventParams = Required<MayHaveVirtualCurrency> & Partial<HasItemName>;
+    type SpendVirtualCurrencyEventParams = CustomParams & Required<MayHaveVirtualCurrency> & Partial<HasItemName>;
 
-    interface UnlockAchievementEventParams {
+    type UnlockAchievementEventParams = CustomParams & {
         /** The id of the achievement that was unlocked. */
         achievement_id: string;
-    }
+    };
 
-    type ViewCartEventParams = MayHaveCurrency & HasItems;
+    type ViewCartEventParams = CustomParams & MayHaveCurrency & HasItems;
 
-    type ViewItemEventParams = MayHaveCurrency & HasItems;
+    type ViewItemEventParams = CustomParams & MayHaveCurrency & HasItems;
 
-    type ViewItemListEventParams = MayHaveItemList & HasItems;
+    type ViewItemListEventParams = CustomParams & MayHaveItemList & HasItems;
 
-    type ViewPromotionEventParams = MayHavePromotion & HasSingleItem<Item & MayHavePromotion>;
+    type ViewPromotionEventParams = CustomParams & MayHavePromotion & HasSingleItem<Item & MayHavePromotion>;
 
-    interface ViewSearchResultsEventParams {
+    type ViewSearchResultsEventParams = CustomParams & {
         /** The term used for the search. */
         search_term?: string;
-    }
+    };
 }

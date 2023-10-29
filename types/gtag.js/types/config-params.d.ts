@@ -227,22 +227,24 @@ declare namespace Gtag {
          *
          * The length of string is limited to **256 characters.**
          *
-         * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/config#user_id}
+         * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/config#user_id Reference}
          */
         user_id?: string;
 
         /**
          * User properties are attributes that can be used to describe segments of your user base, such as language preference or geographic location.
          *
-         * Up to **25** additional user **properties** can be set per project.
+         * There is a limit to the number of user properties that can be set. Look at the Google documentation for current limits.
          *
          * The length of property **name** is limited to **24 characters.**
          *
          * The length of property **value** is limited to **36 characters.**
          *
-         * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/config#user_properties}
+         * @see {@link https://support.google.com/analytics/answer/10075209 Custom  dimensions and metrics}
+         * @see {@link https://support.google.com/analytics/answer/11202874 Google Analytics 360}
+         * @see {@link https://developers.google.com/analytics/devguides/collection/ga4/reference/config#user_properties Reference}
          */
-        user_properties?: Record<string, string>;
+        user_properties?: CustomParams;
     }
 
     /**

@@ -7,13 +7,10 @@ declare var gtag: Gtag.Gtag;
 
 declare namespace Gtag {
     interface GtagCommands {
-        // config: [targetId: string, config?: ControlParams | EventParams | ConfigParams | CustomParams];
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
         set: [targetId: string, config: CustomParams | boolean | string] | [config: CustomParams];
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
         js: [config: Date];
-        // <EventName extends keyof Events>(command: "event", eventName: EventName, ...args: Parameters<Events[EventName]>): void;
-        // event: [eventName: EventNames | (string & {}), eventParams?: ControlParams | EventParams | CustomParams]
         get: [
             targetId: string,
             fieldName: FieldNames | string,
@@ -24,17 +21,6 @@ declare namespace Gtag {
 
     interface Gtag {
         <Command extends keyof GtagCommands>(command: Command, ...args: GtagCommands[Command]): void;
-    }
-
-    interface CustomParams {
-        [key: string]: any;
-    }
-
-    interface ControlParams {
-        groups?: string | string[] | undefined;
-        send_to?: string | string[] | undefined;
-        event_callback?: (() => void) | undefined;
-        event_timeout?: number | undefined;
     }
 
     type Currency = string | number;
